@@ -53,7 +53,38 @@ include 'header.php';
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Users</h1>
                 </div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">User Name</th>
+                            <th scope="col">Email Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
 
+                    <?php
+
+                    $sql_select = "SELECT * FROM $db_hw_tbl_users";
+                    $index = 0;
+
+                    if (!$result = $conn->query($sql_select)) {
+                        echo "Error: {$conn->error}";
+                    }
+
+                    while ($row = $result->fetch_assoc()) : $index++; ?>
+                        <tr>
+                            <td><?php echo $index; ?></td>
+                            <td><?php echo $row['first_name']; ?></td>
+                            <td><?php echo $row['last_name']; ?></td>
+                            <td><?php echo $row['user_name']; ?></td>
+                            <td><?php echo $row['email_address']; ?></td>
+                        </tr>
+                    <?php endwhile; ?>
+                    </tbody>
+                </table>
 
             </main>
         </div>

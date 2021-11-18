@@ -33,26 +33,12 @@ if (!function_exists('empm_user_registration')) {
      * @param $pw
      * @return mixed
      */
-    // function empm_user_registration($fn, $ln, $un, $email, $pw)
-    // {
-    //     $conn = empm_get_var('conn');
-    //     $table = empm_get_var('db_hw_tbl_users');
-    //     $password = md5($pw);
-    //     $sql = "INSERT INTO $table (first_name, last_name, user_name, email_address, password) VALUES ('$first_name', '$last_name', $un', '$email', '$password')";
-
-    //     if (!$conn->query($sql)) {
-    //         return $conn->error;
-    //     }
-
-    //     return $conn->insert_id;
-    // }
-
-    function empm_user_registration($un, $email, $pw)
+    function empm_user_registration($first_name, $last_name, $un, $email, $pw)
     {
         $conn = empm_get_var('conn');
         $table = empm_get_var('db_hw_tbl_users');
         $password = md5($pw);
-        $sql = "INSERT INTO $table (user_name, email_address, password) VALUES ('$un', '$email', '$password')";
+        $sql = "INSERT INTO $table (first_name, last_name, user_name, email_address, password) VALUES ('$first_name', '$last_name', '$un', '$email', '$password')";
 
         if (!$conn->query($sql)) {
             return $conn->error;
@@ -60,6 +46,7 @@ if (!function_exists('empm_user_registration')) {
 
         return $conn->insert_id;
     }
+
 }
 
 if (!function_exists('empm_check_user_login')) {
