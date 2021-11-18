@@ -5,22 +5,22 @@ $errors = array();
 
 if ($form_submission === 'yes') :
 
-    $first_name = isset($_POST['first_name']) ? $_POST['first_name'] : '';
-    $last_name = isset($_POST['last_name']) ? $_POST['last_name'] : '';
+    $full_name = isset($_POST['full_name']) ? $_POST['full_name'] : '';
     $username = isset($_POST['username']) ? $_POST['username'] : '';
+    $phone_number = isset($_POST['phone_number']) ? $_POST['phone_number'] : '';
     $email_address = isset($_POST['email_address']) ? $_POST['email_address'] : '';
     $password = isset($_POST['password']) ? $_POST['password'] : '';
 
-    if (empty($first_name)) {
-        $errors[] = 'Empty or invalid First Name!';
-    }
-
-    if (empty($last_name)) {
-        $errors[] = 'Empty or invalid Last Name!';
+    if (empty($full_name)) {
+        $errors[] = 'Empty or invalid Full Name!';
     }
 
     if (empty($username)) {
         $errors[] = 'Empty or invalid Username!';
+    }
+
+    if (empty($phone_number)) {
+        $errors[] = 'Empty or invalid Phone number!';
     }
 
     if (empty($email_address)) {
@@ -32,7 +32,7 @@ if ($form_submission === 'yes') :
     }
 
     if(empty($errors)){
-        $ret = empm_user_registration($first_name, $last_name, $username, $email_address, $password);
+        $ret = empm_user_registration($full_name, $phone_number, $username, $email_address, $password);
 
         if (!is_int($ret)) {
             $errors[] = $ret;
@@ -58,16 +58,16 @@ if (empm_current_user_id()){
             </div>
         <?php endforeach; endif; ?>
         <div class="form-floating mb-3">
-            <input name="first_name" type="text" class="form-control" id="first_name" placeholder="john">
-            <label for="first_name">First Name</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input name="last_name" type="text" class="form-control" id="last_name" placeholder="smith">
-            <label for="last_name">Last Name</label>
+            <input name="full_name" type="text" class="form-control" id="full_name" placeholder="john">
+            <label for="full_name">Full Name</label>
         </div>
         <div class="form-floating mb-3">
             <input name="username" type="text" class="form-control" id="userName" placeholder="john">
             <label for="userName">Username</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input name="phone_number" type="text" class="form-control" id="phone_number" placeholder="123456789">
+            <label for="phone_number">Phone Number</label>
         </div>
         <div class="form-floating mb-3">
             <input name="email_address" type="email" class="form-control" id="emailAddress" placeholder="name@example.com">

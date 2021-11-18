@@ -57,10 +57,11 @@ include 'header.php';
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">First name</th>
-                            <th scope="col">Last Name</th>
+                            <th scope="col">Full Name</th>
                             <th scope="col">User Name</th>
+                            <th scope="col">Phone Number</th>
                             <th scope="col">Email Address</th>
+                            
                         </tr>
                     </thead>
                     <tbody>
@@ -77,9 +78,9 @@ include 'header.php';
                     while ($row = $result->fetch_assoc()) : $index++; ?>
                         <tr>
                             <td><?php echo $index; ?></td>
-                            <td><?php echo $row['first_name']; ?></td>
-                            <td><?php echo $row['last_name']; ?></td>
+                            <td><?php echo ucwords($row['full_name']); ?></td>
                             <td><?php echo $row['user_name']; ?></td>
+                            <td><?php echo $row['phone_number']; ?></td>
                             <td><?php echo $row['email_address']; ?></td>
                         </tr>
                     <?php endwhile; ?>

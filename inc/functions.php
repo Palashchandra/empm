@@ -33,12 +33,12 @@ if (!function_exists('empm_user_registration')) {
      * @param $pw
      * @return mixed
      */
-    function empm_user_registration($first_name, $last_name, $un, $email, $pw)
+    function empm_user_registration($full_name, $phone_number, $un, $email, $pw)
     {
         $conn = empm_get_var('conn');
         $table = empm_get_var('db_hw_tbl_users');
         $password = md5($pw);
-        $sql = "INSERT INTO $table (first_name, last_name, user_name, email_address, password) VALUES ('$first_name', '$last_name', '$un', '$email', '$password')";
+        $sql = "INSERT INTO $table (full_name, user_name, phone_number, email_address, password) VALUES ('$full_name', '$un', '$phone_number', '$email', '$password')";
 
         if (!$conn->query($sql)) {
             return $conn->error;

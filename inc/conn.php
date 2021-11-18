@@ -36,8 +36,7 @@ if (!mysqli_select_db($conn, $db_name)) {
 //Create users table
 $sql_create_tbl_users = "CREATE TABLE IF NOT EXISTS $db_hw_tbl_users (
         id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        first_name VARCHAR(255),
-        last_name VARCHAR(255),
+        full_name VARCHAR(255),
         user_name VARCHAR(255) UNIQUE NOT NULL,
         email_address VARCHAR(255) UNIQUE NOT NULL,
         password VARCHAR(255) NOT NULL,
