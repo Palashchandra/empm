@@ -20,8 +20,9 @@ if(empm_get_var('logout', $_GET) === 'true'){
 
     setcookie('user_logged_in', '');
 
-    header('Location : login.php');
+    header('Location: login.php');
 }
+
 
 ?>
 
